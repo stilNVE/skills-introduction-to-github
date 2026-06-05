@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div id="chartContainer"></div>
+
+  <script src="https://cdn.nve.no/nvechart/v2.0.7/nvechart.bundle.js"></script>
+  <script>
+    // Get ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const tverrprofilid = params.get("id");
+
+    const charts = new nvechart.Charts();
+    const chart1 = charts.addChart("Tverrprofil " + tverrprofilid);
+
+    const serie1 = new nvechart.CrossProfileSerie(tverrprofilid);
+    charts.addSerie(chart1, serie1);
+
+    charts.drawChart(chart1, "chartContainer");
+  </script>
+</body>
+</html>
